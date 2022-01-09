@@ -1,19 +1,23 @@
-FROM python:3.9 as django-build
+# <WARNING>
+# </WARNING>
 
-RUN apt-get update && apt-get install -y gettext
+# <DOCKER_FROM>
+# </DOCKER_FROM>
 
-COPY requirements.txt /app/requirements.txt
-RUN pip install --no-deps --no-cache-dir -r /app/requirements.txt
+# <NPM>
+# </NPM>
 
+# <BOWER>
+# </BOWER>
 
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+# <PYTHON>
+# </PYTHON>
 
-WORKDIR /app/
-COPY . /app/
+# <SOURCE>
+# </SOURCE>
 
-RUN python manage.py collectstatic --noinput
-RUN python manage.py compilemessages
+# <GULP>
+# </GULP>
 
-ENV PORT=80
-CMD uwsgi --http=0.0.0.0:$PORT --module=simple_articles.wsgi
+# <STATIC>
+# </STATIC>
