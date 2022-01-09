@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-08 16:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: articles/models.py:15
+msgid "Draft"
+msgstr "Entwurfen"
+
+#: articles/models.py:16
+msgid "Published"
+msgstr "Herausgeben"
+
+#: articles/models.py:18
+msgid "title"
+msgstr "Titel"
+
+#: articles/models.py:20
+msgid "created"
+msgstr ""
+
+#: articles/models.py:20
+msgid "slug"
+msgstr "Slug"
+
+#: articles/models.py:24
+msgid "status"
+msgstr "Status"
+
+#: articles/models.py:27
+msgid "created by"
+msgstr ""
+
+#: articles/models.py:31
+msgid "Article preview image"
+msgstr ""
+
+#: articles/models.py:34
+msgid "content"
+msgstr "Inhalt"
+
+#: articles/models.py:37
+msgid "Article"
+msgstr "Artikle"
+
+#: articles/models.py:38
+msgid "Articles"
+msgstr "Artikle"
+
+#: simple_articles/settings.py:125
+msgid "English"
+msgstr "Englisch"
+
+#: simple_articles/settings.py:126
+msgid "German"
+msgstr "Deutsch"
