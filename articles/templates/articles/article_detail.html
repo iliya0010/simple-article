@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
-
 {% block article %}
-<p>{{ article.title }}</p>
-<img src='{{ article.article_preview_image.url }}'></img>
-<p>{{ article.created }}</p>
-<p>{{ article.content|safe }}</p>
+<div class="d-flex align-items-center justify-content-center">
+    <div class="card mb-3">
+        <img class="card-img-top" src="{{ article.article_preview_image.url }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ article.title }}</h5>
+            {{ article.content|safe }}
+            <p class="card-text"><small class="text-muted">{{ article.created }}</small></p>
+        </div>
+    </div>
+</div>
 {% endblock article %}
