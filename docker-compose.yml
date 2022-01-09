@@ -1,29 +1,21 @@
-version: '2'
+version: '3.8'
 
-# Live Mode
-# firstly remove /static_collected from .dockerignore
-# then follow the guide - https://docs.divio.com/en/latest/how-to/local-in-live-configuration/
 services:
-  # db:
-  #   image: postgres:10.16-alpine
-  #   environment:
-  #     POSTGRES_DB: 'postgres'
-  #     POSTGRES_USER: 'postgres'
-  #     POSTGRES_PASSWORD: 'postgres'
-  #   volumes:
-  #     - '.:/app:rw'
   web:
     build:
       context: '.'
-      dockerfile: Dockerfile
-    # depends_on:
-    #   - db
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
     ports:
-      - '8000:8000'
+      - 8000:8000
+    depends_on:
+      - db
+  db:
+    image: postgres:13.0-alpine
+    environment:
+      - POSTGRES_USER=article
+      - POSTGRES_PASSWORD=article
+      - POSTGRES_DB=article_dev
     volumes:
       - '.:/app:rw'
-    command: python manage.py runserver 0.0.0.0:8000
-    # environment:
-    #   - POSTGRES_NAME=postgres
-    #   - POSTGRES_USER=postgres
-    #   - POSTGRES_PASSWORD=postgres

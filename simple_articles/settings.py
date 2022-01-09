@@ -1,6 +1,7 @@
 import os
 import dj_database_url
 from django.utils.translation import gettext_lazy as _
+from django_storage_url import dsn_configured_storage_class
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -66,36 +68,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "simple_articles.wsgi.application"
 
-
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
+    "default": dj_database_url.parse(
+        os.environ.get(
+            "DATABASE_URL",
+            "postgres://article:article@db:5432/article_dev",
+        )
+    ),
 }
-
-# DATABASES = {
-#     "default": dj_database_url.parse(
-#         os.environ.get(
-#             "DATABASE_URL",
-#             "postgresql://postgres:postgres@0.0.0.0:5432/db",
-#         )
-#     ),
-# }
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": os.environ.get("POSTGRES_NAME"),
-#         "USER": os.environ.get("POSTGRES_USER"),
-#         "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-#         "HOST": "db",
-#         "PORT": 5432,
-#     }
-# }
 
 
 # Password validation
@@ -137,8 +117,19 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+# Media files
+# DEFAULT_FILE_STORAGE is configured using DEFAULT_STORAGE_DSN
 
+# read the setting value from the environment variable
+DEFAULT_STORAGE_DSN = os.environ.get("DEFAULT_STORAGE_DSN")
+
+# dsn_configured_storage_class() requires the name of the setting
+DefaultStorageClass = dsn_configured_storage_class("DEFAULT_STORAGE_DSN")
+
+# Django's DEFAULT_FILE_STORAGE requires the class name
+DEFAULT_FILE_STORAGE = "simple_articles.settings.DefaultStorageClass"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
