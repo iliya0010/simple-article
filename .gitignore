@@ -24,3 +24,5 @@ local_settings.py
 # Environment
 .env
 /venv
+
+/media
