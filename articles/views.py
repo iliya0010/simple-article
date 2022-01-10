@@ -30,6 +30,7 @@ class SearchArticleView(ListView):
     template_name = "articles/search_results.html"
 
     def get_queryset(self):
+        print("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFf")
         query = self.request.GET.get("q")
         object_list = Article.objects.filter(tags__name__icontains=query)
         return object_list

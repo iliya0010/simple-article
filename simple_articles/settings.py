@@ -129,7 +129,7 @@ DEFAULT_STORAGE_DSN = os.environ.get("DEFAULT_STORAGE_DSN")
 DefaultStorageClass = dsn_configured_storage_class("DEFAULT_STORAGE_DSN")
 
 # Django's DEFAULT_FILE_STORAGE requires the class name
-DEFAULT_FILE_STORAGE = "simple_articles.settings.DefaultStorageClass"
+# DEFAULT_FILE_STORAGE = "simple_articles.settings.DefaultStorageClass"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
