@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
             <h5 class="card-title">
-                <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a>
+                <a href="{% url 'detail' article.pk %}">{{ article.title }}</a>
             </h5>
             <p class="card-text">{{article.content | safe}}</p>
             <p class="card-text"><small class="text-muted">{{article.created}}</small></p>
