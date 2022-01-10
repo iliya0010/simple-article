@@ -1,3 +1,4 @@
+
 .py[co]
 
 .idea/
@@ -26,3 +27,5 @@ local_settings.py
 /venv
 
 /media
+
+.divio
